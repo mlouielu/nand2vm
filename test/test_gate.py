@@ -53,6 +53,11 @@ class GateTest(unittest.TestCase):
         self.assertEqual(gate.Mux16(a, b, False), a)
         self.assertEqual(gate.Mux16(a, b, True), b)
 
+        a = BitArray('1100110000101101')
+        b = BitArray('0010101011001100')
+        self.assertEqual(gate.Mux16(a, b, False), a)
+        self.assertEqual(gate.Mux16(a, b, True), b)
+
     def test_mux4way16_gate(self):
         a = BitArray([True, True, False, False] * 4)
         b = BitArray([True, False, True, False] * 4)

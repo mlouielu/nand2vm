@@ -37,7 +37,7 @@ def Mux16(a: List[bool], b: List[bool], select: bool) -> List[bool]:
         gate.Mux(a[13], b[13], select),
         gate.Mux(a[14], b[14], select),
         gate.Mux(a[15], b[15], select)
-    ])
+    ], endian=False)
 
 
 def Mux4Way16(a: List[bool], b: List[bool], c: List[bool], d: List[bool],
