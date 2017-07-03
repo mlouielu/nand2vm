@@ -7,3 +7,4 @@
 from .clock import ClockPhase
 from .dff import DFF
 from .bit import Bit
+from .register import Register

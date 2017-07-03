@@ -48,6 +48,9 @@ class BitArray(Sized):
 
     def __repr__(self):
         """Display big endian for debugging"""
+        if not isinstance(self.data[0], bool):
+            # Assume this is a Bit
+            return ''.join('1' if b.state else '0' for b in self.data[::-1])
         return ''.join(['1' if s else '0' for s in self.data[::-1]])
 
     def __len__(self) -> int:
