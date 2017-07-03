@@ -58,4 +58,11 @@ def Mux4Way16(a: List[bool], b: List[bool], c: List[bool], d: List[bool],
 def Mux8Way16(a: List[bool], b: List[bool], c: List[bool], d: List[bool],
               e: List[bool], f: List[bool], g: List[bool], h: List[bool],
               select: List[bool]):
-    pass
+    ab = gate.Mux16(a, b, select[0])
+    cd = gate.Mux16(c, d, select[0])
+    ef = gate.Mux16(e, f, select[0])
+    gh = gate.Mux16(g, h, select[0])
+    abcd = gate.Mux16(ab, cd, select[1])
+    efgh = gate.Mux16(ef, gh, select[1])
+
+    return gate.Mux16(abcd, efgh, select[2])

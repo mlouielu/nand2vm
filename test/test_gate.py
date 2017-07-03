@@ -69,6 +69,33 @@ class GateTest(unittest.TestCase):
         self.assertEqual(gate.Mux4Way16(a, b, c, d, BitArray([True, False])), c)
         self.assertEqual(gate.Mux4Way16(a, b, c, d, BitArray([True, True])), d)
 
+    def test_mux8way16_gate(self):
+        a = BitArray([True, True, True, True] * 4)
+        b = BitArray([True, True, True, False] * 4)
+        c = BitArray([True, True, False, True] * 4)
+        d = BitArray([True, False, True, True] * 4)
+        e = BitArray([False, True, True, True] * 4)
+        f = BitArray([False, False, True, False] * 4)
+        g = BitArray([False, True, False, True] * 4)
+        h = BitArray([False, False, False, True] * 4)
+
+        self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
+                                        BitArray([False, False, False])), a)
+        self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
+                                        BitArray([False, False, True])), b)
+        self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
+                                        BitArray([False, True, False])), c)
+        self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
+                                        BitArray([False, True, True])), d)
+        self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
+                                        BitArray([True, False, False])), e)
+        self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
+                                        BitArray([True, False, True])), f)
+        self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
+                                        BitArray([True, True, False])), g)
+        self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
+                                        BitArray([True, True, True])), h)
+
     def test_and_16_gate(self):
         t = BitArray([True] * 16)
         f = BitArray([False] * 16)
