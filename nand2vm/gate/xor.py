@@ -7,7 +7,7 @@
 from .. import gate
 
 
-def Xor(a: bool, b: bool):
+def Xor(a: bool, b: bool) -> bool:
     return gate.Or(
         gate.And(gate.Not(a), b),
         gate.And(a, gate.Not(b))

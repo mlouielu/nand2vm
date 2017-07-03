@@ -4,16 +4,15 @@
 # found in the LICENSE file.
 #
 
-from typing import List
 from .. import gate
 from ..bitarray import BitArray
 
 
-def Or(a: bool, b: bool):
+def Or(a: bool, b: bool) -> bool:
     return gate.Not(gate.And(gate.Not(a), gate.Not(b)))
 
 
-def Or16(a: List[bool], b: List[bool]) -> List[bool]:
+def Or16(a: BitArray, b: BitArray) -> BitArray:
     assert len(a) == 16
     assert len(b) == 16
 
@@ -37,7 +36,7 @@ def Or16(a: List[bool], b: List[bool]) -> List[bool]:
     ], endian=False)
 
 
-def Or8Way(a: List[bool]) -> bool:
+def Or8Way(a: BitArray) -> bool:
     assert len(a) == 8
 
     a2 = gate.Or(a[0], a[1])

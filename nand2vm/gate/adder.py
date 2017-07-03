@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 #
 
-from typing import List, Tuple
+from typing import Tuple
 from .. import gate
 from ..bitarray import BitArray
 
@@ -24,7 +24,7 @@ def fa(a: bool, b: bool, c: bool) -> Tuple[bool, bool]:
     return (s2, gate.Or(c1, c2))
 
 
-def Add16(a: List[bool], b: List[bool]) -> List[bool]:
+def Add16(a: BitArray, b: BitArray) -> BitArray:
     assert len(a) == 16
     assert len(b) == 16
 

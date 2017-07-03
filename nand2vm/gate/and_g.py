@@ -4,16 +4,15 @@
 # found in the LICENSE file.
 #
 
-from typing import List
 from .. import gate
 from ..bitarray import BitArray
 
 
-def And(a: bool, b: bool):
+def And(a: bool, b: bool) -> bool:
     return gate.Not(gate.Nand(a, b))
 
 
-def And16(a: List[bool], b: List[bool]) -> List[bool]:
+def And16(a: BitArray, b: BitArray) -> BitArray:
     assert len(a) == 16
     assert len(b) == 16
 

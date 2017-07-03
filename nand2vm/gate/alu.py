@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 #
 
-from typing import List, Tuple
+from typing import Tuple
 from .. import gate
 from ..bitarray import BitArray
 

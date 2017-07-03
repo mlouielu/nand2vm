@@ -5,5 +5,5 @@
 #
 
 
-def Nand(a: bool, b: bool):
+def Nand(a: bool, b: bool) -> bool:
     return not (a and b)

@@ -4,7 +4,6 @@
 # found in the LICENSE file.
 #
 
-from typing import List
 from .. import gate
 from ..bitarray import BitArray
 
@@ -16,7 +15,7 @@ def Mux(a: bool, b: bool, select: bool):
     )
 
 
-def Mux16(a: List[bool], b: List[bool], select: bool) -> List[bool]:
+def Mux16(a: BitArray, b: BitArray, select: bool) -> BitArray:
     assert len(a) == 16
     assert len(b) == 16
 
@@ -40,8 +39,8 @@ def Mux16(a: List[bool], b: List[bool], select: bool) -> List[bool]:
     ], endian=False)
 
 
-def Mux4Way16(a: List[bool], b: List[bool], c: List[bool], d: List[bool],
-              select: List[bool]):
+def Mux4Way16(a: BitArray, b: BitArray, c: BitArray, d: BitArray,
+              select: BitArray) -> BitArray:
     """4 way 16 bit multiplexor requiring 2 control inputs
 
     select[1]   select[0]  | out
@@ -55,9 +54,9 @@ def Mux4Way16(a: List[bool], b: List[bool], c: List[bool], d: List[bool],
     return gate.Mux16(q, r, select[1])
 
 
-def Mux8Way16(a: List[bool], b: List[bool], c: List[bool], d: List[bool],
-              e: List[bool], f: List[bool], g: List[bool], h: List[bool],
-              select: List[bool]):
+def Mux8Way16(a: BitArray, b: BitArray, c: BitArray, d: BitArray,
+              e: BitArray, f: BitArray, g: BitArray, h: BitArray,
+              select: BitArray) -> BitArray:
     ab = gate.Mux16(a, b, select[0])
     cd = gate.Mux16(c, d, select[0])
     ef = gate.Mux16(e, f, select[0])
