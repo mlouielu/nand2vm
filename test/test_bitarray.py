@@ -52,3 +52,26 @@ class BitArrayTest(unittest.TestCase):
 
         self.assertIsInstance(b[2:], BitArray)
         self.assertEqual(b[2:], BitArray([True, True]))
+
+    def test_init_with_neg_int(self):
+        """This should convert to default bits array"""
+        source = -32123
+
+        b = BitArray(source)
+        r = BitArray('1000001010000101')
+        self.assertEqual(b, r)
+
+        source = -1155
+        b = BitArray(source)
+        r = BitArray('1111101101111101')
+        self.assertEqual(b, r)
+
+        source = -2
+        b = BitArray(source)
+        r = BitArray('1111111111111110')
+        self.assertEqual(b, r)
+
+        source = -1
+        b = BitArray(source)
+        r = BitArray('1111111111111111')
+        self.assertEqual(b, r)

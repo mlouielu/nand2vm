@@ -20,8 +20,16 @@ class BitArray(Sized):
         elif isinstance(source, str):
             self.data = [bool(int(s)) for s in source]
         elif isinstance(source, int):
+            neg = False
+            if source < 0:
+                neg = True
+                source = -source - 1
+
             self.data = [bool(int(s)) for s in bin(source)[2:].rjust(
                 self.DEFAULT_BITS, '0')][::-1]
+
+            if neg:
+                self.data = self.__invert__().data
         else:
             raise NotImplementedError('Not support to convert %s to bitarray' % (
                                       type(source)))
