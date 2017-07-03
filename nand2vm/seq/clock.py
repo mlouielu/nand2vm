@@ -4,6 +4,11 @@
 # found in the LICENSE file.
 #
 
-from . import gate
-from . import seq
-from .bitarray import BitArray
+from enum import Enum
+
+
+class ClockPhase(Enum):
+	LOW = 0
+	POSITIVE_EDGE = 1
+	HIGH = 2
+	NEGATIVE_EDGE = 3

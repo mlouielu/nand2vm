@@ -4,6 +4,6 @@
 # found in the LICENSE file.
 #
 
-from . import gate
-from . import seq
-from .bitarray import BitArray
+from .clock import ClockPhase
+from .dff import DFF
+from .bit import Bit
