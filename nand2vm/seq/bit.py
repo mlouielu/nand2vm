@@ -12,6 +12,7 @@ from .. import gate
 class Bit(object):
 	def __init__(self):
 		self.d = DFF()
+		self.state = self.d.state
 		self.clock = ClockPhase.POSITIVE_EDGE
 
 	def update(self, source: bool, load: bool, clock: ClockPhase=None) -> bool:
