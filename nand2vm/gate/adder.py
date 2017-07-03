@@ -24,9 +24,10 @@ def fa(a: bool, b: bool, c: bool) -> Tuple[bool, bool]:
     return (s2, gate.Or(c1, c2))
 
 
-def add16(a: List[bool], b: List[bool]) -> List[bool]:
+def Add16(a: List[bool], b: List[bool]) -> List[bool]:
     assert len(a) == 16
     assert len(b) == 16
+
     s1, c1 = gate.fa(a[0], b[0], False)
     s2, c2 = gate.fa(a[1], b[1], c1)
     s3, c3 = gate.fa(a[2], b[2], c2)

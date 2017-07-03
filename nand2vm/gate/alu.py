@@ -19,7 +19,7 @@ def ALU(x: BitArray, y: BitArray,
     outy = gate.Mux4Way16(y, negy, gate.FALSE, gate.TRUE, select=BitArray([zy, ny]))
 
     anded = gate.And16(outx, outy)
-    added = gate.add16(outx, outy)
+    added = gate.Add16(outx, outy)
     result = gate.Mux16(anded, added, f)
 
     negresult = gate.Not16(result)

@@ -204,4 +204,4 @@ class AdderTest(unittest.TestCase):
             a = BitArray(a)
             b = BitArray(b)
             r = BitArray(r)
-            self.assertEqual(gate.add16(a, b), r)
+            self.assertEqual(gate.Add16(a, b), r)

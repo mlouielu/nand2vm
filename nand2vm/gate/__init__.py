@@ -10,6 +10,6 @@ from .not_g import Not, Not16
 from .or_g import Or, Or16, Or8Way
 from .xor import Xor
 from .mux import Mux, Mux16, Mux4Way16, Mux8Way16
-from .adder import fa, ha, add16
+from .adder import fa, ha, Add16
 from .alu import ALU
 from .const import TRUE, FALSE
