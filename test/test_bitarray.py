@@ -42,3 +42,13 @@ class BitArrayTest(unittest.TestCase):
 
     def test_len(self):
         self.assertEqual(len(BitArray('110')), 3)
+
+    def test_slice(self):
+        source = [True, True, False, True]
+        b = BitArray(source)
+
+        self.assertIsInstance(b[:2], BitArray)
+        self.assertEqual(b[:2], BitArray([False, True]))
+
+        self.assertIsInstance(b[2:], BitArray)
+        self.assertEqual(b[2:], BitArray([True, True]))

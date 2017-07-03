@@ -29,6 +29,8 @@ class BitArray(object):
             self.data.reverse()
 
     def __getitem__(self, key):
+        if isinstance(key, slice):
+            return BitArray(self.data[key], endian=False)
         return self.data[key]
 
     def __setitem__(self, key, value):
