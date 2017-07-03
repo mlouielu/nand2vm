@@ -35,3 +35,16 @@ def Or16(a: List[bool], b: List[bool]) -> List[bool]:
         gate.Or(a[14], b[14]),
         gate.Or(a[15], b[15])
     ], endian=False)
+
+
+def Or8Way(a: List[bool]) -> bool:
+    assert len(a) == 8
+
+    a2 = gate.Or(a[0], a[1])
+    a4 = gate.Or(a[2], a[3])
+    a6 = gate.Or(a[4], a[5])
+    a8 = gate.Or(a[6], a[7])
+    a24 = gate.Or(a2, a4)
+    a68 = gate.Or(a6, a8)
+
+    return gate.Or(a24, a68)

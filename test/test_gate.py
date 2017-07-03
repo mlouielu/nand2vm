@@ -141,6 +141,19 @@ class GateTest(unittest.TestCase):
         self.assertEqual(gate.Not16(a), ~a)
         self.assertEqual(gate.Not16(a), r)
 
+    def test_or8way_gate(self):
+        a = BitArray('00001000')
+        self.assertEqual(gate.Or8Way(a), True)
+
+        a = BitArray('00000000')
+        self.assertEqual(gate.Or8Way(a), False)
+
+        a = BitArray('11111111')
+        self.assertEqual(gate.Or8Way(a), True)
+
+        a = BitArray('10101100')
+        self.assertEqual(gate.Or8Way(a), True)
+
 
 class AdderTest(unittest.TestCase):
     def test_half_adder(self):
