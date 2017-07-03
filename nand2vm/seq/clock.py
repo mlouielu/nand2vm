@@ -8,7 +8,7 @@ from enum import Enum
 
 
 class ClockPhase(Enum):
-	LOW = 0
-	POSITIVE_EDGE = 1
-	HIGH = 2
-	NEGATIVE_EDGE = 3
+    LOW = 0
+    POSITIVE_EDGE = 1
+    HIGH = 2
+    NEGATIVE_EDGE = 3
