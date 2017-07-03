@@ -4,8 +4,10 @@
 # found in the LICENSE file.
 #
 
+from typing import Sized
 
-class BitArray(object):
+
+class BitArray(Sized):
     """This bitarray data is store with small endian, display with big endian"""
     DEFAULT_BITS = 16
 
@@ -40,7 +42,7 @@ class BitArray(object):
         """Display big endian for debugging"""
         return ''.join(['1' if s else '0' for s in self.data[::-1]])
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.data)
 
     def __eq__(self, other):
