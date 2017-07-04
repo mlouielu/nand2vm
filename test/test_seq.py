@@ -8,10 +8,7 @@ import os
 import unittest
 from collections import namedtuple
 from nand2vm import seq, BitArray
-
-
-PACKAGE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
-DATA_DIRECTORY = os.path.join(PACKAGE_DIRECTORY, 'data')
+from . import DATA_DIRECTORY
 
 
 class DFFTest(unittest.TestCase):
