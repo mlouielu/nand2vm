@@ -7,5 +7,5 @@
 from .. import gate
 from ..bitarray import BitArray
 
-TRUE = BitArray(2 ** BitArray.DEFAULT_BITS - 1)
-FALSE = BitArray(0)
+TRUE16 = BitArray(2 ** BitArray.DEFAULT_BITS - 1)
+FALSE16 = BitArray(0)

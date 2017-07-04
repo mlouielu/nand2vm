@@ -12,4 +12,4 @@ from .xor import Xor
 from .mux import Mux, Mux16, Mux4Way16, Mux8Way16
 from .adder import fa, ha, Add16
 from .alu import ALU
-from .const import TRUE, FALSE
+from .const import TRUE16, FALSE16
