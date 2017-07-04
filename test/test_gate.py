@@ -269,3 +269,13 @@ class AdderTest(unittest.TestCase):
             b = BitArray(b)
             r = BitArray(r)
             self.assertEqual(gate.Add16(a, b), r)
+
+    def test_inc16(self):
+        self.assertEqual(gate.Inc16(BitArray('0000000000000000')),
+                         BitArray('0000000000000001'))
+        self.assertEqual(gate.Inc16(BitArray('1111111111111111')),
+                         BitArray('0000000000000000'))
+        self.assertEqual(gate.Inc16(BitArray('0000000000000101')),
+                         BitArray('0000000000000110'))
+        self.assertEqual(gate.Inc16(BitArray('1111111111111011')),
+                         BitArray('1111111111111100'))
