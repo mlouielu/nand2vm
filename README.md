@@ -56,3 +56,46 @@ True
 >>>
 ```
 
+How To Start
+------------
+
+Project 1 implement:
+
+* gate.not_g.Not
+* gate.and_g.And
+* gate.or_g.Or
+* gate.xor.Xor
+* gate.mux.Mux
+* gate.mux.DMux
+* gate.and_g.Not16
+* gate.and_g.And16
+* gate.or_g.Or16
+* gate.mux.Mux16
+* gate.or_g.Or8Way
+* gate.mux.Mux4Way16
+* gate.mux.Mux8Way16
+* gate.mux.DMux4Way
+* gate.mux.DMux8Way
+
+Project 2 implement:
+
+* gate.adder.ha
+* gate.adder.fa
+* gate.adder.Add16
+* gate.adder.Inc16
+* gate.alu.ALU
+
+Project 3 implement:
+
+* seq.bit.Bit
+* seq.register.Register
+* seq.ram.RAM8
+* seq.ram.RAM64
+* seq.ram.RAM512
+* seq.ram.RAM4K
+* seq.ram.RAM16K
+* seq.pc.PC
+
+Project 6 implement:
+
+* assembler
