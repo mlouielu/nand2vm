@@ -75,3 +75,33 @@ class RegisterTest(unittest.TestCase):
         for d in data:
             out = self.register.update(d.source, d.load, clock=d.time)
             self.assertEqual(out, d.out)
+
+
+class PCTest(unittest.TestCase):
+    DATA = namedtuple('Data', ['clock', 'source', 'reset', 'load', 'inc', 'out', 'time'])
+
+    def prepare_data(self, path):
+        data = []
+        with open(path) as f:
+            f.readline()
+            for row in f.readlines():
+                row = row.strip('\n').split('|')
+                t = row[0]
+                row[0] = seq.ClockPhase.POSITIVE_EDGE if t.endswith('+') else seq.ClockPhase.HIGH
+                row[1] = BitArray(int(row[1]))
+                row[2] = bool(int(row[2]))
+                row[3] = bool(int(row[3]))
+                row[4] = bool(int(row[4]))
+                row[5] = BitArray(int(row[5]))
+                row.append(int(t.split('+')[0]))
+                data.append(self.DATA(*row))
+        return data
+
+    def setUp(self):
+        self.pc = seq.PC()
+
+    def test_pc(self):
+        data = self.prepare_data(os.path.join(DATA_DIRECTORY, 'PC.cmp'))
+        for d in data:
+            out = self.pc.update(d.source, d.reset, d.load, d.inc, clock=d.clock)
+            self.assertEqual(out, d.out, d)
