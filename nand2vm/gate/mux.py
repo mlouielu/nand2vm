@@ -54,6 +54,7 @@ def Mux4Way16(a: BitArray, b: BitArray, c: BitArray, d: BitArray,
     assert len(b) == 16
     assert len(c) == 16
     assert len(d) == 16
+    assert len(select) == 2
 
     q = gate.Mux16(a, b, select[0])
     r = gate.Mux16(c, d, select[0])
@@ -71,6 +72,7 @@ def Mux8Way16(a: BitArray, b: BitArray, c: BitArray, d: BitArray,
     assert len(f) == 16
     assert len(g) == 16
     assert len(h) == 16
+    assert len(select) == 3
 
     ab = gate.Mux16(a, b, select[0])
     cd = gate.Mux16(c, d, select[0])

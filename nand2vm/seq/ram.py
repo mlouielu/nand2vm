@@ -29,7 +29,7 @@ class RAM8(object):
 
         if clock:
             self.clock = clock
-        al, bl, cl, dl, el, fl, gl, hl = gate.DMux8Way(load, address)
+        al, bl, cl, dl, el, fl, gl, hl = gate.DMux8Way(load, address[:3])
         return gate.Mux8Way16(
             self.a.update(source, al, clock=self.clock),
             self.b.update(source, bl, clock=self.clock),
