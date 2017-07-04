@@ -4,7 +4,6 @@
 # found in the LICENSE file.
 #
 
-from .. import gate
 from ..bitarray import BitArray
 
 TRUE16 = BitArray(2 ** BitArray.DEFAULT_BITS - 1)
