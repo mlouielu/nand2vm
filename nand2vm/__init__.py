@@ -6,4 +6,5 @@
 
 from . import gate
 from . import seq
+from . import assembler
 from .bitarray import BitArray
