@@ -56,14 +56,12 @@ class RAM512Test(unittest.TestCase, RAMTest):
     ram = RAM()
 
 
-@unittest.skipIf('PyPy' not in sys.version, 'Too slow in CPython')
 class RAM4KTest(unittest.TestCase, RAMTest):
     RAM = seq.RAM4K
     CMP_DATA = 'RAM4K.cmp'
     ram = RAM()
 
 
-@unittest.skipIf('PyPy' not in sys.version, 'Too slow in CPython')
 class RAM16KTest(unittest.TestCase, RAMTest):
     RAM = seq.RAM16K
     CMP_DATA = 'RAM16K.cmp'
