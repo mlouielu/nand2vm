@@ -50,6 +50,11 @@ def Mux4Way16(a: BitArray, b: BitArray, c: BitArray, d: BitArray,
        1           0       | c
        1           1       | d
     """
+    assert len(a) == 16
+    assert len(b) == 16
+    assert len(c) == 16
+    assert len(d) == 16
+
     q = gate.Mux16(a, b, select[0])
     r = gate.Mux16(c, d, select[0])
     return gate.Mux16(q, r, select[1])
@@ -58,6 +63,15 @@ def Mux4Way16(a: BitArray, b: BitArray, c: BitArray, d: BitArray,
 def Mux8Way16(a: BitArray, b: BitArray, c: BitArray, d: BitArray,
               e: BitArray, f: BitArray, g: BitArray, h: BitArray,
               select: BitArray) -> BitArray:
+    assert len(a) == 16
+    assert len(b) == 16
+    assert len(c) == 16
+    assert len(d) == 16
+    assert len(e) == 16
+    assert len(f) == 16
+    assert len(g) == 16
+    assert len(h) == 16
+
     ab = gate.Mux16(a, b, select[0])
     cd = gate.Mux16(c, d, select[0])
     ef = gate.Mux16(e, f, select[0])
@@ -76,6 +90,8 @@ def DMux(source: bool, select: bool) -> Tuple[bool, bool]:
 
 
 def DMux4Way(source: bool, select: BitArray) -> Tuple[bool, bool, bool, bool]:
+    assert len(select) == 2
+
     t1, t2 = gate.DMux(source, select[1])
     a, b = gate.DMux(t1, select[0])
     c, d = gate.DMux(t2, select[0])
@@ -84,6 +100,8 @@ def DMux4Way(source: bool, select: BitArray) -> Tuple[bool, bool, bool, bool]:
 
 def DMux8Way(source: bool, select: BitArray) -> Tuple[bool, bool, bool, bool,
                                                       bool, bool, bool, bool]:
+    assert len(select) == 3
+
     t1, t2, t3, t4 = gate.DMux4Way(source, select[1:])
     a, b = gate.DMux(t1, select[0])
     c, d = gate.DMux(t2, select[0])

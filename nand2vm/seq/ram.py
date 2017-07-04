@@ -25,6 +25,8 @@ class RAM8(object):
 
     def update(self, source: BitArray, load: bool, address: BitArray,
                clock: ClockPhase=None) -> BitArray:
+        assert len(source) == 16
+
         if clock:
             self.clock = clock
         al, bl, cl, dl, el, fl, gl, hl = gate.DMux8Way(load, address)
@@ -56,6 +58,8 @@ class RAM64(object):
 
     def update(self, source: BitArray, load: bool, address: BitArray,
                clock: ClockPhase=None) -> BitArray:
+        assert len(source) == 16
+
         if clock:
             self.clock = clock
         al, bl, cl, dl, el, fl, gl, hl = gate.DMux8Way(load, address[:3])
@@ -87,6 +91,8 @@ class RAM512(object):
 
     def update(self, source: BitArray, load: bool, address: BitArray,
                clock: ClockPhase=None) -> BitArray:
+        assert len(source) == 16
+
         if clock:
             self.clock = clock
         al, bl, cl, dl, el, fl, gl, hl = gate.DMux8Way(load, address[:3])
@@ -118,6 +124,8 @@ class RAM4K(object):
 
     def update(self, source: BitArray, load: bool, address: BitArray,
                clock: ClockPhase=None) -> BitArray:
+        assert len(source) == 16
+
         if clock:
             self.clock = clock
         al, bl, cl, dl, el, fl, gl, hl = gate.DMux8Way(load, address[:3])
@@ -145,6 +153,8 @@ class RAM16K(object):
 
     def update(self, source: BitArray, load: bool, address: BitArray,
                clock: ClockPhase=None) -> BitArray:
+        assert len(source) == 16
+
         if clock:
             self.clock = clock
         al, bl, cl, dl = gate.DMux4Way(load, address[:2])

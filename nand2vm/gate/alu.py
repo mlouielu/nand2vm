@@ -12,6 +12,9 @@ from ..bitarray import BitArray
 def ALU(x: BitArray, y: BitArray,
         zx: bool, nx: bool, zy: bool, ny: bool,
         f: bool, no: bool) -> Tuple[BitArray, bool, bool]:
+    assert len(x) == 16
+    assert len(y) == 16
+
     negx = gate.Not16(x)
     negy = gate.Not16(y)
 

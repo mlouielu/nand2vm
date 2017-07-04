@@ -19,6 +19,8 @@ class Register(object):
         self.clock = ClockPhase.HIGH
 
     def update(self, source: BitArray, load: bool, clock: ClockPhase=None) -> BitArray:
+        assert len(source) == 16
+
         if clock:
             self.clock = clock
         o1 = self.bits[0].update(source[0], load, clock=self.clock)
