@@ -4,6 +4,7 @@
 # found in the LICENSE file.
 #
 
+from typing import Tuple
 from .. import gate
 from ..bitarray import BitArray
 
@@ -65,3 +66,27 @@ def Mux8Way16(a: BitArray, b: BitArray, c: BitArray, d: BitArray,
     efgh = gate.Mux16(ef, gh, select[1])
 
     return gate.Mux16(abcd, efgh, select[2])
+
+
+def DMux(source: bool, select: bool) -> Tuple[bool, bool]:
+    return (
+        gate.Mux(source, False, select),
+        gate.Mux(False, source, select)
+    )
+
+
+def DMux4Way(source: bool, select: BitArray) -> Tuple[bool, bool, bool, bool]:
+    t1, t2 = gate.DMux(source, select[1])
+    a, b = gate.DMux(t1, select[0])
+    c, d = gate.DMux(t2, select[0])
+    return (a, b, c, d)
+
+
+def DMux8Way(source: bool, select: BitArray) -> Tuple[bool, bool, bool, bool,
+                                                      bool, bool, bool, bool]:
+    t1, t2, t3, t4 = gate.DMux4Way(source, select[1:])
+    a, b = gate.DMux(t1, select[0])
+    c, d = gate.DMux(t2, select[0])
+    e, f = gate.DMux(t3, select[0])
+    g, h = gate.DMux(t4, select[0])
+    return (a, b, c, d, e, f, g, h)

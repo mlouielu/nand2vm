@@ -9,6 +9,7 @@ from nand2vm import gate, BitArray
 
 
 class GateTest(unittest.TestCase):
+
     def test_nand_gate(self):
         self.assertEqual(gate.Nand(False, False), True)
         self.assertEqual(gate.Nand(False, True), True)
@@ -96,6 +97,68 @@ class GateTest(unittest.TestCase):
         self.assertEqual(gate.Mux8Way16(a, b, c, d, e, f, g, h,
                                         BitArray([True, True, True])), h)
 
+    def test_dmux_gate(self):
+        self.assertEqual(gate.DMux(False, False), (False, False))
+        self.assertEqual(gate.DMux(False, True), (False, False))
+        self.assertEqual(gate.DMux(True, False), (True, False))
+        self.assertEqual(gate.DMux(True, True), (False, True))
+
+    def test_dmux4way(self):
+        # source: False
+        self.assertEqual(gate.DMux4Way(False, BitArray([False, False])),
+                         (False, False, False, False))
+        self.assertEqual(gate.DMux4Way(False, BitArray([False, True])),
+                         (False, False, False, False))
+        self.assertEqual(gate.DMux4Way(False, BitArray([True, False])),
+                         (False, False, False, False))
+        self.assertEqual(gate.DMux4Way(False, BitArray([True, True])),
+                         (False, False, False, False))
+        # source: True
+        self.assertEqual(gate.DMux4Way(True, BitArray([False, False])),
+                         (True, False, False, False))
+        self.assertEqual(gate.DMux4Way(True, BitArray([False, True])),
+                         (False, True, False, False))
+        self.assertEqual(gate.DMux4Way(True, BitArray([True, False])),
+                         (False, False, True, False))
+        self.assertEqual(gate.DMux4Way(True, BitArray([True, True])),
+                         (False, False, False, True))
+
+    def test_dmux8way(self):
+        # source: False
+        self.assertEqual(gate.DMux8Way(False, BitArray([False, False, False])),
+                         (False, False, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(False, BitArray([False, False, True])),
+                         (False, False, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(False, BitArray([False, True, False])),
+                         (False, False, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(False, BitArray([False, True, True])),
+                         (False, False, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(False, BitArray([True, False, False])),
+                         (False, False, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(False, BitArray([True, False, True])),
+                         (False, False, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(False, BitArray([True, True, False])),
+                         (False, False, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(False, BitArray([True, True, True])),
+                         (False, False, False, False, False, False, False, False))
+        # source: True
+        self.assertEqual(gate.DMux8Way(True, BitArray([False, False, False])),
+                         (True, False, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(True, BitArray([False, False, True])),
+                         (False, True, False, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(True, BitArray([False, True, False])),
+                         (False, False, True, False, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(True, BitArray([False, True, True])),
+                         (False, False, False, True, False, False, False, False))
+        self.assertEqual(gate.DMux8Way(True, BitArray([True, False, False])),
+                         (False, False, False, False, True, False, False, False))
+        self.assertEqual(gate.DMux8Way(True, BitArray([True, False, True])),
+                         (False, False, False, False, False, True, False, False))
+        self.assertEqual(gate.DMux8Way(True, BitArray([True, True, False])),
+                         (False, False, False, False, False, False, True, False))
+        self.assertEqual(gate.DMux8Way(True, BitArray([True, True, True])),
+                         (False, False, False, False, False, False, False, True))
+
     def test_and_16_gate(self):
         t = BitArray([True] * 16)
         f = BitArray([False] * 16)
@@ -156,6 +219,7 @@ class GateTest(unittest.TestCase):
 
 
 class AdderTest(unittest.TestCase):
+
     def test_half_adder(self):
         self.assertEqual(gate.ha(False, False), (False, False))
         self.assertEqual(gate.ha(False, True), (True, False))
